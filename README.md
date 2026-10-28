@@ -1,4 +1,4 @@
-# GeoAI Assistant
+# GISAI Assistant
 
 Assistant géomatique local pour QGIS — articulation d'un modèle de langage local, d'un RAG documentaire et d'outils spatiaux déterministes.
 
