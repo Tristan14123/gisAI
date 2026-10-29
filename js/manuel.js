@@ -41,6 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (progressFill) {
       const percent = total > 1 ? ((currentIndex) / (total - 1)) * 100 : 100;
+      progressFill.style.setProperty('--target-width', `${percent}%`);
       progressFill.style.width = `${percent}%`;
     }
 
