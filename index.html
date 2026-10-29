@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GISAI Assistant — Assistant géomatique local pour QGIS</title>
-  <meta name="description" content="Conception d'un assistant géomatique local pour QGIS : articulation d'un modèle de langage, d'un RAG documentaire et d'outils spatiaux déterministes. Étude de faisabilité et protocole d'évaluation." />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23E0A53B'/><text x='50' y='66' font-size='52' text-anchor='middle' font-family='monospace' font-weight='bold' fill='%230A0E14'>G</text></svg>" />
+  <title>GisAI Assistant — Assistant géomatique local pour QGIS</title>
+  <meta name="description" content="De la conception d'un assistant géomatique local pour QGIS : articulation d'un modèle de langage, d'un RAG documentaire et d'outils spatiaux déterministes. Étude de faisabilité et protocole d'évaluation." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23000000'/><text x='50' y='66' font-size='52' text-anchor='middle' font-family='monospace' font-weight='bold' fill='%23FFFFFF'>G</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -17,7 +17,7 @@
   <header class="nav">
     <div class="wrap nav-in">
       <a href="#top" class="brand">
-        <div>GISAI<span>.</span></div>
+        <div>GisAI<span>.</span></div>
       </a>
       <ul class="nav-links">
         <li><a href="#propos">Propos</a></li>
@@ -27,9 +27,10 @@
         <li><a href="#resultats">Résultats</a></li>
         <li><a href="#gouvernance">Gouvernance</a></li>
         <li><a href="manuel.html">Manuel</a></li>
+        <li><a href="agentic-team.html">Géomaticien IA</a></li>
       </ul>
       <div class="nav-right">
-        <a href="#contact" class="btn btn-primary btn-sm">Télécharger le manuscrit</a>
+        <a href="https://raw.githubusercontent.com/Tristan14123/gisAI/main/rapport_geomatique_ia_v4.docx.pdf" download="rapport_geomatique_ia_v4.docx.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Télécharger le manuscrit</a>
         <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
       </div>
     </div>
@@ -42,12 +43,16 @@
       <span class="eyebrow"><span class="dot"></span>Rapport de synthèse · Géomatique &amp; IA agentique</span>
       <h1>Un assistant géomatique <span class="a">local</span>, <span class="t">déterministe</span> et souverain</h1>
       <p class="lead">
-        Conception d'un assistant intégré à <strong>QGIS</strong> qui articule un
-        <strong>modèle de langage local</strong>, un <strong>RAG documentaire</strong> et des
+        De la conception d'un assistant intégré à <strong>QGIS</strong> qui articule un
+        <strong>modèle de langage local</strong>, à la création d'un <strong>RAG documentaire</strong> et des
         <strong>outils spatiaux déterministes</strong> — pour traduire une demande en langage
-        naturel en traitement SIG fiable, traçable et contrôlé.<br>
+        naturel en traitement SIG fiable, traçable et contrôlé. D'un assistant à un vrai collègue de travail, l'<strong>Intelligence Artificielle</strong> permet maintenant d'automatiser chaques étapes d'un projet géomatique.<br>
         Par <strong>Tristan VACHAUDEZ</strong>.
-      </p>
+        </p>
+        <p style="margin-top: 1em; color: var(--text-4);">
+          <a href="agentic-team.html" style="text-decoration: underline; color: var(--link);"><strong>A lire :</strong> La recette d'établissement d'une équipe de géomaticiens autonomes <span class="sr-only">(cliquez pour en savoir plus)</span></a>
+        </p>
+      
       <div class="hero-cta">
         <a href="#architecture" class="btn btn-primary">Découvrir l'architecture</a>
         <a href="#evaluation" class="btn btn-ghost">Voir le protocole d'évaluation</a>
@@ -60,11 +65,12 @@
       </div>
     </div>
   </section>
-
+ 
   <!-- ===================== PROPOS ===================== -->
   <section class="section" id="propos">
     <div class="wrap">
       <div class="sec-head reveal">
+        
         <div class="sec-label">01 · Le propos</div>
         <h2 class="sec-title">Séparer la planification de l'exécution</h2>
         <p class="sec-desc">
@@ -149,7 +155,7 @@
 
       <!-- Diagramme SVG -->
       <div class="arch reveal">
-        <svg viewBox="0 0 1100 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagramme d'architecture du GISAI Assistant">
+        <svg viewBox="0 0 1100 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagramme d'architecture du GisAI Assistant">
           <defs>
             <linearGradient id="gAmber" x1="0" y1="0" x2="1" y2="1">
               <stop offset="0%" stop-color="#F0BC5E"/><stop offset="100%" stop-color="#E0A53B"/>
@@ -485,9 +491,7 @@
   <section class="section" id="contact">
     <div class="wrap">
       <div class="cta reveal">
-        <h2>
-          Une methodologie détaillée
-        <h2>
+        <h1>Une méthodologie détaillée</h1>
         <p>
           Huit chapitres : introduction, état de l'art, exigences, conception, méthodologie,
           résultats, discussion et conclusion. Les affirmations non vérifiables sont signalées
@@ -498,6 +502,39 @@
           <a href="#evaluation" class="btn btn-ghost">Voir le protocole</a>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ===================== THÈSE AGENTIQUE ===================== -->
+  <section class="section" id="agentic">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-label">07 · Architecture</div>
+        <h2 class="sec-title">Équipe de Géomaticiens Autonomes (IA Agentique)</h2>
+        <p class="sec-desc">
+          Recette d'établissement d'une équipe de géomaticiens autonomes : architecture serveur, runtime Hermes Agent, gouvernance déterministe et feuille de route opérationnelle.
+        </p>
+      </div>
+      <div class="grid g3 reveal" style="margin-top:26px;">
+        <div class="card">
+          <div class="ico">🖥️</div>
+          <h3>Socle Infrastructurel</h3>
+          <p>VPS/Docker, port 8642, API Server et cloisonnement par session.</p>
+          <span class="tag">Hermes Agent · Runtime</span>
+        </div>
+        <div class="card">
+          <div class="ico">🗺️</div>
+          <h3>Outillage Géospatial</h3>
+          <p>ArcPy, GDAL, PostGIS, Deep Learning, NLP spatial et mémoire procédurale agentskills.io.</p>
+          <span class="tag">GisAI · Skills Hub</span>
+        </div>
+        <div class="card">
+          <div class="ico">🛡️</div>
+          <h3>Gouvernance Déterministe</h3>
+          <p>Moindre privilège, garde-fous au runtime, Human-in-the-loop et journalisation immuable.</span>
+        </div>
+      </div>
+      <a href="agentic-team.html" class="btn btn-primary" style="margin-top:26px;">Lire la thèse complète</a>
     </div>
   </section>
 
@@ -520,7 +557,7 @@
             <div class="catalogue-info">
               <span class="catalogue-num">01</span>
               <h4>Prérequis et environnement</h4>
-              <p>Matériel, OS, Docker et NVIDIA Container Toolkit.</p>
+              <p>Matériel, OS, Docker et CPU/GPU.</p>
             </div>
           </div>
           <!-- Étape 2 -->
@@ -529,7 +566,7 @@
             <div class="catalogue-info">
               <span class="catalogue-num">02</span>
               <h4>Installation d'Ollama</h4>
-              <p>Moteur d'inférence locale sur le port 11434.</p>
+              <p>Intelligence Artificielle locale.</p>
             </div>
           </div>
           <!-- Étape 3 -->
@@ -547,7 +584,7 @@
             <div class="catalogue-info">
               <span class="catalogue-num">04</span>
               <h4>Déploiement Hermes Agent</h4>
-              <p>Runtime d'agent autonome sur le port 8642.</p>
+              <p>L'agent autonome.</p>
             </div>
           </div>
           <!-- Étape 5 -->
@@ -598,7 +635,7 @@
     <div class="wrap">
       <div class="foot-grid">
         <div>
-          <h5>GISAI Assistant</h5>
+          <h5>GisAI Assistant</h5>
           <span>Assistant géomatique local pour QGIS — modèles, RAG et outils spatiaux déterministes.</span>
         </div>
         <div>
