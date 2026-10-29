@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thèse d'Architecture — Équipe de Géomaticiens Autonomes (IA Agentique)</title>
+  <meta name="description" content="Recette d'établissement d'une équipe de géomaticiens autonomes propulsée par l'IA agentique : architecture, runtime Hermes Agent, gouvernance et feuille de route." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===================== NAV ===================== -->
+  <header class="nav">
+    <div class="wrap nav-in">
+      <a href="index.html" class="brand">
+        <div>GisAI<span>.</span></div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="manuel.html">Manuel</a></li>
+        <li><a href="agentic-team.html" class="active">Géomaticien IA</a></li>
+      </ul>
+      <div class="nav-right">
+        <a href="index.html" class="btn btn-ghost btn-sm">Retour à l'accueil</a>
+        <a href="https://raw.githubusercontent.com/Tristan14123/gisAI/main/rapport_geomatique_ia_v4.docx.pdf" download="rapport_geomatique_ia_v4.docx.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Télécharger le manuscrit</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== HERO ARTICLE ===================== -->
+  <section class="hero" style="padding: 72px 0 56px; border-bottom: 1px solid var(--line);">
+    <div class="wrap hero-inner">
+      <span class="eyebrow"><span class="dot"></span>Architecture &amp; Ingénierie Organisationnelle</span>
+      <h1>La recette d'établissement d'une équipe<br>de géomaticiens autonomes</h1>
+      <p class="lead" style="max-width: 72ch;">
+        Propulsée par l'IA agentique. Une architecture industrielle articulant runtime persistant, outillage géospatial avancé et gouvernance déterministe native.
+      </p>
+      <div class="hero-meta" style="margin-top: 40px;">
+        <div class="m"><div class="k">Auteur</div><div class="v">Tristan VACHAUDEZ</div></div>
+        <div class="m"><div class="k">Statut</div><div class="v">Rapport de synthèse · Open Source</div></div>
+        <div class="m"><div class="k">Licence</div><div class="v">Open Source</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTENU DE L'ARTICLE ===================== -->
+  <main class="wrap" style="max-width: 880px;">
+    <article style="margin-bottom: 60px; line-height: 1.75; text-align: justify;">
+
+      <section id="intro">
+        <h2 style="font-size: 24px; margin-bottom: 12px;">1. Introduction Thématique &amp; Cadre Stratégique de l'Autonomie</h2>
+        <p>
+          La géomatique moderne franchit actuellement un cap d'ingénierie critique. Historiquement restreints à la numérisation manuelle, à la correction vectorielle et à l'exécution séquentielle de scripts de géotraitement au sein de Systèmes d'Information Géographique (SIG) traditionnels, les services géospatiaux font face à une accélération massive du volume de données spatio-temporelles non structurées (flux d'imagerie, flux IoT, capteurs Lidar, rapports textuels géolocalisés). Dans cet écosystème à haute fréquence, la transition de l'automatisation rigide — basée sur des scripts Python déterministes et fragiles aux variations de schémas — vers une autonomie décisionnelle pilotée par des agents logiciels ne relève pas d'une simple recherche d'efficience opérationnelle : elle constitue un saut paradigmatique fondamental.
+        </p>
+        <p>
+          L'agent logiciel autonome ne se contente pas d'exécuter une règle préprogrammée ; il appréhende une consigne métier à haut niveau d'abstraction, planifie une séquence d'outils géospatiaux, réagit aux exceptions attributaires ou topologiques et maintient un état conversationnel persistant 24 heures sur 24 et 7 jours sur 7.
+        </p>
+        <p>
+          Cette mutation exige une refonte radicale du cadre de gouvernance des systèmes intelligents en entreprise. La gouvernance du Machine Learning (ML) traditionnel s'est structurée autour de l'évaluation a posteriori d'extrants statiques, mesurant la précision globale d'un modèle de classification, l'équité d'un score ou l'absence de biais dans un échantillon d'entraînement. À l'inverse, la gouvernance de l'IA agentique déplace le point de contrôle de l'extrant textuel vers l'exécution d'actions autonomes en temps réel sur des API, des bases de données spatiales de production (PostGIS, Enterprise Geodatabase) et des systèmes d'enregistrement.
+        </p>
+
+        <div class="card" style="margin: 26px 0; background: var(--surface); border: 1px solid var(--line);">
+          <div style="font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--text-3); margin-bottom: 10px;">Évolution de la gouvernance de l'IA</div>
+          <div class="grid g2" style="margin-top: 14px;">
+            <div style="padding: 18px; border-right: 1px solid var(--line); border-radius: var(--r-md) 0 0 var(--r-md);">
+              <strong style="color: var(--ink-2);">Machine Learning traditionnel</strong>
+              <ul style="margin-top: 10px; font-size: 13px; color: var(--text-2);">
+                <li>Évaluation a posteriori des résultats</li>
+                <li>Mesure statique (Précision / Biais)</li>
+                <li>Extrants textuels ou prédictifs</li>
+              </ul>
+            </div>
+            <div style="padding: 18px; border-radius: 0 var(--r-md) var(--r-md) 0; background: var(--panel);">
+              <strong style="color: var(--ink-2);">IA Agentique autonome</strong>
+              <ul style="margin-top: 10px; font-size: 13px; color: var(--text-2);">
+                <li>Interception &amp; contrôle au runtime</li>
+                <li>Autorisation dynamique d'outils</li>
+                <li>Actions irréversibles sur API</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="arch reveal">
+          <svg viewBox="0 0 900 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Architecture serveur d'agent Hermes">
+            <defs>
+              <marker id="arrow1" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto">
+                <path d="M0,0 L7,3 L0,6 Z" fill="#999999"/>
+              </marker>
+              <linearGradient id="gPanel1" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#f7f7f7"/>
+              </linearGradient>
+            </defs>
+
+            <!-- Ligne 1 : Frontends -->
+            <g class="flow-node">
+              <rect x="40" y="40" width="240" height="70" rx="10" fill="url(#gPanel1)" stroke="#cccccc" stroke-width="1.5"/>
+              <text x="160" y="74" text-anchor="middle" fill="#111111" font-size="14" font-weight="700" font-family="Inter">Frontends &amp; Clients</text>
+              <text x="160" y="94" text-anchor="middle" fill="#666666" font-size="11" font-family="Inter">Open WebUI · Telegram · Teams · SIG</text>
+            </g>
+
+            <!-- Flèche vers API -->
+            <line x1="285" y1="75" x2="410" y2="75" stroke="#999999" stroke-width="1.5" marker-end="url(#arrow1)"/>
+            <text x="345" y="66" fill="#999999" font-size="10" font-family="JetBrains Mono">Bearer Auth · Session-Key</text>
+
+            <!-- Ligne 2 : API Server -->
+            <g class="flow-node">
+              <rect x="430" y="40" width="240" height="150" rx="10" fill="url(#gPanel1)" stroke="#cccccc" stroke-width="1.5"/>
+              <text x="550" y="76" text-anchor="middle" fill="#111111" font-size="15" font-weight="700" font-family="Inter">API Server Daemon</text>
+              <text x="550" y="96" text-anchor="middle" fill="#4A9E96" font-size="12" font-family="JetBrains Mono">Port 8642</text>
+              <text x="550" y="114" text-anchor="middle" fill="#666666" font-size="11" font-family="Inter">Démon système · HTTP OpenAI</text>
+              <line x1="450" y1="130" x2="540" y2="130" stroke="#e0e0e0" stroke-width="1"/>
+              <line x1="560" y1="130" x2="650" y2="130" stroke="#e0e0e0" stroke-width="1"/>
+              <text x="495" y="158" text-anchor="middle" fill="#4A9E96" font-size="10" font-family="JetBrains Mono">/v1/chat/completions</text>
+              <text x="605" y="158" text-anchor="middle" fill="#B97F22" font-size="10" font-family="JetBrains Mono">/v1/responses</text>
+              <text x="715" y="158" text-anchor="middle" fill="#8B7BE0" font-size="10" font-family="JetBrains Mono">/v1/runs</text>
+            </g>
+
+            <!-- Flèches vers droite -->
+            <line x1="675" y1="75" x2="760" y2="75" stroke="#999999" stroke-width="1.5" marker-end="url(#arrow1)"/>
+            <line x1="675" y1="145" x2="760" y2="145" stroke="#999999" stroke-width="1.5" marker-end="url(#arrow1)"/>
+
+            <!-- Colonne droite : Mémoire -->
+            <g class="flow-node">
+              <rect x="780" y="40" width="90" height="50" rx="8" fill="url(#gPanel1)" stroke="#cccccc" stroke-width="1.5"/>
+              <text x="825" y="70" text-anchor="middle" fill="#111111" font-size="11" font-weight="700" font-family="Inter">Mémoire</text>
+              <text x="825" y="86" text-anchor="middle" fill="#666666" font-size="9" font-family="Inter">SQLite FTS5</text>
+              <text x="825" y="100" text-anchor="middle" fill="#666666" font-size="9" font-family="Inter">+ Honcho</text>
+            </g>
+
+            <!-- Colonne droite : Gateway -->
+            <g class="flow-node">
+              <rect x="780" y="140" width="90" height="50" rx="8" fill="url(#gPanel1)" stroke="#cccccc" stroke-width="1.5"/>
+              <text x="825" y="170" text-anchor="middle" fill="#111111" font-size="11" font-weight="700" font-family="Inter">Gateway</text>
+              <text x="825" y="186" text-anchor="middle" fill="#666666" font-size="9" font-family="Inter">Docker · ArcPy</text>
+              <text x="825" y="200" text-anchor="middle" fill="#666666" font-size="9" font-family="Inter">· GisAI</text>
+            </g>
+
+          </svg>
+          <div class="arch-cap">Fig. 1 — Architecture serveur d'agent Hermes (port 8642, authentification Bearer, cloisonnement par session)</div>
+        </div>
+
+        <p>
+          Les impacts opérationnels des défaillances agentiques en milieu professionnel dépassent largement la simple « hallucination textuelle ». Une étude menée par Forrester en 2025 démontre ainsi que 72 % des échecs d'IA en entreprise découlent d'actions système non autorisées et d'appels d'outils hors périmètre plutôt que de fautes de syntaxe ou d'erreurs de génération de texte. Dans le secteur géospatial, où la donnée possède une valeur juridique, patrimoniale et environnementale majeure, l'exécution non contrôlée d'un agent peut conduire à la suppression accidentelle de couches d'infrastructures critiques, à la fuite de données foncières nominatives ou à la dégradation silencieuse d'index spatiaux en production.
+        </p>
+        <p>
+          La thèse centrale de cet ouvrage établit que la « recette » industrielle d'une équipe de géomaticiens autonomes ne repose pas sur la seule adoption de modèles de langage (Large Language Models ou LLM), mais sur l'articulation indissociable de trois piliers d'architecture :
+        </p>
+        <div class="grid g3" style="margin-top: 18px;">
+          <div class="card">
+            <h4 style="font-size: 15px;">1. Moteur d'agent persistant</h4>
+            <p style="font-size: 13px; color: var(--text-2);">Runtime garantissant la haute disponibilité, l'asynchronisme et la persistance contextuelle.</p>
+          </div>
+          <div class="card">
+            <h4 style="font-size: 15px;">2. Outillage métier géospatial (GisAI)</h4>
+            <p style="font-size: 13px; color: var(--text-2);">Couplage apprentissage profond, statistiques spatiales et analyse explicite de la géographie.</p>
+          </div>
+          <div class="card">
+            <h4 style="font-size: 15px;">3. Gouvernance déterministe</h4>
+            <p style="font-size: 13px; color: var(--text-2);">Cadre structurel et nativement intégré borner l'autonomie à l'exécution.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="infrastructure" style="margin-top: 50px;">
+        <h2 style="font-size: 24px; margin-bottom: 12px;">2. Le Socle Infrastructurel : Architecture Moteur &amp; Runtime de l'Agent</h2>
+        <p>
+          L'institutionnalisation d'une équipe géomatique autonome impose un choix strict quant au mode d'hébergement et d'orchestration du moteur d'exécution (runtime). Garantir une disponibilité 24/7 de la force de travail agentique tout en protégeant les données géospatiales internes interdit l'usage d'architectures empiriques ou non isolées.
+        </p>
+        <p>
+          L'exécution d'agents autonomes sur des postes de travail personnels ou des ordinateurs portables introduit des failles de sécurité et de continuité d'activité inacceptables. Sur un poste client, le cycle de vie de l'agent est subordonné aux fermetures de session, à la mise en veille matérielle et aux fluctuations du réseau local, brisant irrémédiablement l'exécution des tâches planifiées d'arrière-plan (Cron jobs). Sur le plan de la sécurité applicative, un agent s'exécutant en local dispose d'une visibilité directe sur le système de fichiers de l'utilisateur, ses jetons de session et ses dossiers personnels. Lorsqu'un tel agent parcourt le Web à la recherche de données cartographiques ou ingère des documents PDF non nettoyés provenant de sources externes, il devient vulnérable aux attaques par injection d'invites (prompt injection indirecte).
+        </p>
+        <p>
+          À l'inverse, l'hébergement du moteur d'agent sur un Serveur Virtuel Privé (VPS) ou une infrastructure cloud conteneurisée sous Docker confine l'agent dans un bac à sable (sandbox) strictement isolé. En cas d'injection malveillante, le rayon d'impact est circonscrit au conteneur, garantissant la protection intégrale du réseau interne de l'entreprise et la persistance H24 des opérations.
+        </p>
+
+        <table class="tbl-wrap" style="margin-top: 22px;">
+          <thead>
+            <tr><th>Critère d'évaluation</th><th>Application Desktop / Ordinateur Portable</th><th>Serveur / VPS Dédié (Conteneurisé)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Disponibilité opérationnelle</td><td>Interrompue dès la mise en veille matérielle ou la déconnexion du poste client.</td><td>Continue (24/7/365), adaptée à la planification Cron et aux surveillances d'arrière-plan.</td></tr>
+            <tr><td>Ressources / Coût</td><td>Exploite le matériel local ; aucun surcoût d'hébergement direct mais instabilité d'exécution.</td><td>Ressources système garanties ; coût d'infrastructure résiduel (~5 à 20 $/mois).</td></tr>
+            <tr><td>Sécurité face aux injections</td><td>Risque critique : accès direct au système de fichiers local, aux identifiants et données privées.</td><td>Isolation étanche dans un conteneur Docker ; rayon d'impact strictement confiné.</td></tr>
+            <tr><td>Maintien de la mémoire</td><td>Fragmenté et dépendant du maintien de la session locale.</td><td>Centralisé, immuable et persistant via base SQLite FTS5 et indexation dialectique Honcho.</td></tr>
+          </tbody>
+        </table>
+
+        <p style="margin-top: 22px;">
+          Le socle logiciel sélectionné pour piloter cette autonomie repose sur l'architecture open-source Hermes Agent (développée par Nous Research). Hermes Agent s'exécute en tant que démon système d'arrière-plan et expose une interface API HTTP compatible avec les standards de l'industrie (par défaut sur le port 8642, activé via <code>API_SERVER_ENABLED=true</code> et sécurisé par authentification Bearer via <code>API_SERVER_KEY</code>). L'architecture API d'Hermes s'articule autour de trois points d'accès majeurs aux caractéristiques sémantiques distinctes :
+        </p>
+        <table style="margin-top: 16px;">
+          <thead>
+            <tr><th>Endpoint</th><th>Type</th><th>Usage</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>POST /v1/chat/completions</code></td><td>Stateless</td><td>Format OpenAI Chat Completions. Flux SSE avec keepalive toutes les 10 secondes pour éviter les timeouts sur les traitements longs.</td></tr>
+            <tr><td><code>POST /v1/responses</code></td><td>Stateful</td><td>Persistance de l'historique complet via <code>previous_response_id</code> ou <code>conversation</code>.</td></tr>
+            <tr><td><code>POST /v1/runs</code></td><td>Asynchrone</td><td>Retourne immédiatement un <code>run_id</code>. Interrogation d'état, flux d'événements, interruption, approbation explicite.</td></tr>
+          </tbody>
+        </table>
+
+        <p style="margin-top: 18px;">
+          Afin d'assurer la sécurité des réessais réseau, l'endpoint <code>POST /v1/runs</code> prend en charge l'en-tête <code>Idempotency-Key</code> (1 à 255 caractères ASCII visibles). Le serveur réserve le <code>run_id</code> pendant 24 heures. En cas de réessai exact, il retourne le <code>run_id</code> initial avec le statut <code>202 Accepted</code> et l'en-tête <code>Idempotency-Replayed: true</code>.
+        </p>
+
+        <p style="margin-top: 18px;">
+          La mémoire persistante à long terme d'Hermes Agent repose sur un cycle d'apprentissage fermé (closed learning loop). Le système couple une base de recherche textuelle SQLite FTS5 (Full-Text Search) à un moteur de modélisation dialectique de l'utilisateur (Honcho). Afin de maintenir le cloisonnement strict des mémoires multi-utilisateurs, le serveur s'appuie sur l'en-tête HTTP spécifique <code>X-Hermes-Session-Key</code> (max 256 caractères, rejet des caractères de contrôle). Cette valeur définit l'identifiant stable de l'utilisateur ou du canal.
+        </p>
+      </section>
+
+      <section id="GisAI" style="margin-top: 50px;">
+        <h2 style="font-size: 24px; margin-bottom: 12px;">3. L'Outillage Métier Géospatial &amp; l'Intégration GisAI</h2>
+        <p>
+          L'IA agentique ne délivre sa pleine valeur métier qu'à la condition de s'interfacer nativement avec des moteurs de géotraitement de niveau industriel (tels qu'ArcGIS Pro et son environnement Python ArcPy). Cette intégration convertit des consignes abstraites en chaînes analytiques automatisées applicables sur des rasters, des vecteurs et des structures multidimensionnelles.
+        </p>
+
+        <ul style="margin-top: 18px; font-size: 13px; color: var(--text-2); line-height: 1.8; padding-left: 20px;">
+          <li><strong>Données brutes en entrée</strong> : structurées (PostGIS, géodatabases, couches vectorielles) et non structurées (imagerie raster, nuages de points Lidar, textes PDF / flux RSS).</li>
+          <li><strong>Moteur de géotraitement et GisAI</strong> : ArcGIS Pro / ArcPy via la passerelle d'outils (Tool Gateway) d'Hermes Agent — Deep Learning (classification, segmentation, détection d'objets), traitement 3D (Lidar, MNT), NLP spatial (entités nommées, géocodage), modélisation spatio-temporelle.</li>
+          <li><strong>Mémoire procédurale</strong> : consignation des séquences d'opérations réussies conformes au standard open-source agentskills.io.</li>
+          <li><strong>Skills Hub</strong> : publication des compétences validées, réutilisables par l'ensemble des agents de l'équipe.</li>
+        </ul>
+
+        <p style="margin-top: 22px;">
+          L'intégration de la GisAI et du Deep Learning offre à l'agent la capacité de structurer de l'information géospatiale à partir de sources hétérogènes. Dans le domaine de la télédétection, l'agent orchestre des modèles d'apprentissage profond pour réaliser la classification de pixels, la segmentation d'images et la détection d'objets sur des rasters haute résolution. Pour les flux non structurés textuels, l'agent déploie des techniques de traitement du langage naturel (NLP) pour extraire les entités nommées locales et les adresses, alimentant ainsi des moteurs de géocodage.
+        </p>
+        <p>
+          Un pilier fondamental de cette architecture réside dans la mémoire procédurale et le système de création autonome de compétences (skills system). Lorsqu'un agent résout avec succès un problème d'ingénierie spatiale complexe, il consigne cette chaîne d'opérations sous la forme d'une procédure structurée et réutilisable. Conforme à la norme open-source agentskills.io, cette nouvelle compétence est publiée sur le Skills Hub de l'organisation.
+        </p>
+        <ul style="margin-top: 18px; font-size: 13px; color: var(--text-2);">
+          <li><strong>Boîte à outils Statistiques Spatiales</strong> : Appariement d'agrégats (clustering spatial) et Modélisation de relations spatiales.</li>
+          <li><strong>Boîte à outils GisAI</strong> : Analyse de texte (NLP pour le géocodage), Entité et analyse tabulaire, IA de série chronologique.</li>
+          <li><strong>Boîte à outils Spatial Analyst</strong> : Algèbre spatial, analyse multidimensionnelle sur rasters spatio-temporels, modélisateur d'aptitude.</li>
+          <li><strong>Boîte à outils Image Analyst</strong> : Segmentation et classification, Deep Learning (détection d'objets, classification de pixels).</li>
+          <li><strong>Boîte à outils 3D Analyst</strong> : Nuage de points (classification, filtrage et interpolation de données Lidar 3D).</li>
+        </ul>
+      </section>
+
+      <section id="gouvernance" style="margin-top: 50px;">
+        <h2 style="font-size: 24px; margin-bottom: 12px;">4. Cadre de Gouvernance Agentique, Sécurité &amp; Contrôle d'Autonomie</h2>
+        <p>
+          Déployer des agents autonomes connectés à des SIG d'entreprise exige l'instauration d'une « autonomie gouvernée ». Ce concept impose que toute action générée par un modèle de langage soit interceptée, évaluée et validée par un cadre de contrôle déterministe au moment même de son exécution (runtime), bloquant l'instruction au niveau de la couche d'orchestration avant qu'elle ne modifie l'environnement de production.
+        </p>
+
+        <div class="arch reveal">
+          <svg viewBox="0 0 900 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Flux de gouvernance agentique">
+            <defs>
+              <marker id="arrow3" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto">
+                <path d="M0,0 L7,3 L0,6 Z" fill="#999999"/>
+              </marker>
+              <linearGradient id="gPanel3" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#f7f7f7"/>
+              </linearGradient>
+            </defs>
+
+            <!-- Haut -->
+            <g class="flow-node">
+              <rect x="340" y="40" width="220" height="60" rx="10" fill="url(#gPanel3)" stroke="#cccccc" stroke-width="1.5"/>
+              <text x="450" y="74" text-anchor="middle" fill="#111111" font-size="14" font-weight="700" font-family="Inter">Actions de l'agent LLM</text>
+            </g>
+            <line x1="450" y1="100" x2="450" y2="120" stroke="#999999" stroke-width="1.5" marker-end="url(#arrow3)"/>
+
+            <!-- Pilier 1 -->
+            <g class="flow-node">
+              <rect x="340" y="120" width="220" height="60" rx="10" fill="url(#gPanel3)" stroke="#cccccc" stroke-width="1.5"/>
+              <text x="450" y="154" text-anchor="middle" fill="#111111" font-size="13" font-weight="700" font-family="Inter">Pilier 1 · Identité &amp; Moindre Privilège</text>
+            </g>
+            <line x1="450" y1="180" x2="450" y2="200" stroke="#999999" stroke-width="1.5" marker-end="url(#arrow3)"/>
+
+            <!-- Pilier 2 -->
+            <g class="flow-node">
+              <rect x="340" y="200" width="220" height="60" rx="10" fill="url(#gPanel3)" stroke="#cccccc" stroke-width="1.5"/>
+              <text x="450" y="234" text-anchor="middle" fill="#111111" font-size="13" font-weight="700" font-family="Inter">Pilier 2 · Contrôles &amp; Garde-Fous</text>
+            </g>
+            <line x1="450" y1="260" x2="450" y2="280" stroke="#999999" stroke-width="1.5" marker-end="url(#arrow3)"/>
+
+            <!-- Évaluation du Risque -->
+            <g class="flow-node">
+              <rect x="340" y="280" width="220" height="60" rx="10" fill="#f2f2f2" stroke="#cccccc" stroke-width="1.5"/>
+              <text x="450" y="314" text-anchor="middle" fill="#111111" font-size="13" font-weight="700" font-family="Inter">Évaluation du Risque</text>
+            </g>
+
+            <!-- Branche gauche : risque élevé -->
+            <line x1="340" y1="310" x2="200" y2="310" stroke="#999999" stroke-width="1.5" marker-end="url(#arrow3)"/>
+            <g class="flow-node">
+              <rect x="80" y="310" width="100" height="60" rx="8" fill="url(#gPanel3)" stroke="#cccccc" stroke-width="1.5"/>
+              <text x="130" y="342" text-anchor="middle" fill="#111111" font-size="12" font-weight="700" font-family="Inter">Risque élevé</text>
+            </g>
+            <line x1="130" y1="370" x2="130" y2="390" stroke="#999999" stroke-width="1.5" marker-end="url(#arrow3)"/>
+
+            <!-- Branche droite : routinière -->
+            <line x1="560" y1="310" x2="700" y2="310" stroke="#999999" stroke-width="1.5" marker-end="url(#arrow3)"/>
+            <g class="flow-node">
+              <rect x="720" y="310" width="100" height="60" rx="8" fill="url(#gPanel3)" stroke="#cccccc" stroke-width="1.5"/>
+              <text x="770" y="342" text-anchor="middle" fill="#111111" font-size="12" font-weight="700" font-family="Inter">Routinière</text>
+            </g>
+
+            <!-- Pilier 3 (au centre, reçoit les deux branches) -->
+            <g class="flow-node">
+              <rect x="340" y="390" width="220" height="80" rx="10" fill="url(#gPanel3)" stroke="#cccccc" stroke-width="1.5"/>
+              <text x="450" y="422" text-anchor="middle" fill="#111111" font-size="13" font-weight="700" font-family="Inter">Pilier 3 · Autonomie Gouvernée</text>
+              <text x="450" y="442" text-anchor="middle" fill="#666666" font-size="11" font-family="Inter">Human-in-the-loop · /v1/runs/{id}/approval</text>
+            </g>
+            <line x1="130" y1="390" x2="340" y2="390" stroke="#999999" stroke-width="1.5" marker-end="url(#arrow3)"/>
+            <line x1="720" y1="340" x2="560" y2="340" stroke="#999999" stroke-width="1.5"/>
+            <line x1="560" y1="340" x2="560" y2="390" stroke="#999999" stroke-width="1.5" marker-end="url(#arrow3)"/>
+
+            <!-- Pilier 4 -->
+            <g class="flow-node">
+              <rect x="340" y="490" width="220" height="60" rx="10" fill="url(#gPanel3)" stroke="#cccccc" stroke-width="1.5"/>
+              <text x="450" y="524" text-anchor="middle" fill="#111111" font-size="13" font-weight="700" font-family="Inter">Pilier 4 · Traçabilité &amp; Journalisation</text>
+            </g>
+            <line x1="450" y1="550" x2="450" y2="570" stroke="#999999" stroke-width="1.5" marker-end="url(#arrow3)"/>
+
+            <!-- Exécution -->
+            <g class="flow-node">
+              <rect x="340" y="570" width="220" height="60" rx="10" fill="#f2f2f2" stroke="#cccccc" stroke-width="1.5"/>
+              <text x="450" y="604" text-anchor="middle" fill="#111111" font-size="13" font-weight="700" font-family="Inter">Exécution sur le SIG / API</text>
+            </g>
+          </svg>
+          <div class="arch-cap">Fig. 3 — Flux de gouvernance agentique : interception, évaluation du risque et exécution contrôlée</div>
+        </div>
+
+        <ol style="margin-top: 18px; font-size: 13px; color: var(--text-2); line-height: 1.7;">
+          <li><strong>Identité et gestion des accès à moindre privilège</strong> : Chaque agent reçoit une identité machine unique et vérifiable. Le partage de clés d'API globales est strictement proscrit.</li>
+          <li><strong>Contrôles d'exécution et garde-fous déterministes</strong> : La passerelle d'exécution (Runtime Gate) valide déterministement les commandes (scripts Python, requêtes SQL) avant leur transmission au système hôte, de manière externe au LLM.</li>
+          <li><strong>Autonomie gouvernée et intervention humaine</strong> : Les opérations en lecture seule s'exécutent de manière autonome. Les actions irréversibles sont interceptées et mises en attente dans des files d'approbation humaines via <code>/v1/runs/{run_id}/approval</code>.</li>
+          <li><strong>Traçabilité et journalisation immuable</strong> : Registre d'audit continu et non modifiable consignant l'ensemble des appels d'outils, les arguments transmis, la clé de session et le résultat renvoyé.</li>
+        </ol>
+
+        <p style="margin-top: 22px;">
+          Ce référentiel s'articule avec les cadres normatifs et réglementaires internationaux :
+        </p>
+        <ul style="margin-top: 10px; font-size: 13px; color: var(--text-2);">
+          <li><strong>Règlement européen sur l'IA (AI Act)</strong> : Conformité avec l'Article 14 (supervision humaine effective) et l'Article 50 (transparence des opérations automatisées).</li>
+          <li><strong>NIST AI RMF</strong> : Alignement sur le profil d'IA générative concernant la maîtrise des risques d'accès non contrôlé aux outils systèmes.</li>
+          <li><strong>Top 10 OWASP pour l'IA Agentique</strong> : Contre-mesures ciblant la surautorisation, le détournement d'outils et les injections d'invites indirectes.</li>
+        </ul>
+
+        <table class="tbl-wrap" style="margin-top: 22px;">
+          <thead>
+            <tr><th>Risque d'autonomie</th><th>Cause technique sous-jacente</th><th>Contrôle structurel de prévention</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Surautorisation (Prolifération d'autorité)</td><td>Octroi de privilèges système permanents et étendus par facilité de configuration.</td><td>Identités machines isolées appliquées selon le principe du moindre privilège strict.</td></tr>
+            <tr><td>Défaillances en cascade</td><td>Propagation d'une donnée spatiale corrompue entre agents au sein d'une chaîne de traitement.</td><td>Isolation des sous-agents, validation des interfaces et vérification des données transmises.</td></tr>
+            <tr><td>Injection d'invites &amp; Contournement</td><td>Instructions malveillantes dissimulées dans des rasters, vectoriels ou fichiers Web ingérés.</td><td>Validation et filtrage des commandes dans la couche d'orchestration, de façon externe au LLM.</td></tr>
+            <tr><td>Lacunes de traçabilité</td><td>Fragmentation des journaux lors d'exécutions multi-agents distribuées.</td><td>Journalisation centralisée immuable liée à la clé de session stable (<code>X-Hermes-Session-Key</code>).</td></tr>
+            <tr><td>Dilemme de la responsabilité</td><td>Incertitude quant au responsable humain lors d'une altération de données par un agent.</td><td>Attribution formelle de superviseurs humains et routage automatique vers la file d'approbation.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="orchestration" style="margin-top: 50px;">
+        <h2 style="font-size: 24px; margin-bottom: 12px;">5. Orchestration Multi-Agents, Automatisation Planifiée &amp; Optimisation Économique</h2>
+        <p>
+          Maximiser la productivité d'une équipe géomatique autonome repose sur la capacité de l'architecture à paralléliser les traitements complexes au moyen de sous-agents spécialisés, tout en maîtrisant les coûts d'inférence LLM.
+        </p>
+
+        <div class="arch reveal">
+          <svg viewBox="0 0 900 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Agent principal et sous-agents">
+            <defs>
+              <marker id="arrow4" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto">
+                <path d="M0,0 L7,3 L0,6 Z" fill="#999999"/>
+              </marker>
+              <linearGradient id="gPanel4" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#f7f7f7"/>
+              </linearGradient>
+            </defs>
+
+            <g class="flow-node">
+              <rect x="340" y="40" width="220" height="90" rx="12" fill="url(#gPanel4)" stroke="#cccccc" stroke-width="1.5"/>
+              <text x="450" y="78" text-anchor="middle" fill="#111111" font-size="15" font-weight="700" font-family="Inter">Agent Principal / Hôte</text>
+              <text x="450" y="98" text-anchor="middle" fill="#666666" font-size="11" font-family="Inter">Délégation dynamique · pattern fan-out</text>
+            </g>
+
+            <line x1="340" y1="130" x2="120" y2="130" stroke="#999999" stroke-width="1.5" marker-end="url(#arrow4)"/>
+            <line x1="450" y1="130" x2="450" y2="170" stroke="#999999" stroke-width="1.5" marker-end="url(#arrow4)"/>
+            <line x1="560" y1="130" x2="780" y2="130" stroke="#999999" stroke-width="1.5" marker-end="url(#arrow4)"/>
+
+            <g class="flow-node">
+              <rect x="20" y="130" width="100" height="100" rx="10" fill="url(#gPanel4)" stroke="#cccccc" stroke-width="1.5"/>
+              <text x="70" y="166" text-anchor="middle" fill="#111111" font-size="13" font-weight="600" font-family="Inter">Sous-Agent</text>
+              <text x="70" y="186" text-anchor="middle" fill="#4A9E96" font-size="11" font-family="JetBrains Mono">Extraction SIG</text>
+              <text x="70" y="206" text-anchor="middle" fill="#666666" font-size="10" font-family="Inter">child_session</text>
+            </g>
+
+            <g class="flow-node">
+              <rect x="350" y="170" width="200" height="100" rx="10" fill="url(#gPanel4)" stroke="#cccccc" stroke-width="1.5"/>
+              <text x="450" y="206" text-anchor="middle" fill="#111111" font-size="13" font-weight="600" font-family="Inter">Sous-Agent</text>
+              <text x="450" y="226" text-anchor="middle" fill="#B97F22" font-size="11" font-family="JetBrains Mono">GisAI / Rasters</text>
+              <text x="450" y="246" text-anchor="middle" fill="#666666" font-size="10" font-family="Inter">child_session</text>
+            </g>
+
+            <g class="flow-node">
+              <rect x="780" y="130" width="100" height="100" rx="10" fill="url(#gPanel4)" stroke="#cccccc" stroke-width="1.5"/>
+              <text x="830" y="166" text-anchor="middle" fill="#111111" font-size="13" font-weight="600" font-family="Inter">Sous-Agent</text>
+              <text x="830" y="186" text-anchor="middle" fill="#8B7BE0" font-size="11" font-family="JetBrains Mono">NLP Urbanisme</text>
+              <text x="830" y="206" text-anchor="middle" fill="#666666" font-size="10" font-family="Inter">child_session</text>
+            </g>
+
+            <line x1="70" y1="230" x2="70" y2="270" stroke="#999999" stroke-width="1.5" marker-end="url(#arrow4)"/>
+            <line x1="450" y1="270" x2="450" y2="310" stroke="#999999" stroke-width="1.5" marker-end="url(#arrow4)"/>
+            <line x1="830" y1="230" x2="830" y2="270" stroke="#999999" stroke-width="1.5" marker-end="url(#arrow4)"/>
+
+            <line x1="70" y1="270" x2="450" y2="270" stroke="#999999" stroke-width="1.5" marker-end="url(#arrow4)"/>
+            <line x1="450" y1="310" x2="830" y2="310" stroke="#999999" stroke-width="1.5" marker-end="url(#arrow4)"/>
+
+            <g class="flow-node">
+              <rect x="340" y="310" width="220" height="90" rx="10" fill="#f2f2f2" stroke="#cccccc" stroke-width="1.5"/>
+              <text x="450" y="346" text-anchor="middle" fill="#111111" font-size="14" font-weight="700" font-family="Inter">Consolidation &amp; Rapport Spatial</text>
+              <text x="450" y="368" text-anchor="middle" fill="#666666" font-size="11" font-family="Inter">subagent.start · subagent.complete · delegation_id</text>
+            </g>
+          </svg>
+          <div class="arch-cap">Fig. 4 — Orchestration multi-agents : agent principal, sous-agents spécialisés et consolidation</div>
+        </div>
+
+        <p style="margin-top: 22px;">
+          L'automatisation continue s'appuie sur le gestionnaire de tâches planifiées (Cron / Scheduled Jobs), accessible via l'API REST sous les routes <code>/api/jobs</code>. Un job configure un prompt, une fréquence d'exécution, un jeu de compétences métiers et un canal de livraison cible (Telegram, Teams, Slack).
+        </p>
+
+        <p style="margin-top: 18px;">
+          Sur le plan économique, le fonctionnement d'un agent autonome génère un volume massif de jetons. Une requête d'agent déployant des outils complexes peut ainsi consommer plus de 38 000 jetons d'entrée (prompt tokens) par tour. Pour garantir la viabilité économique du système, l'architecture associe l'usage de modèles d'inférence performants et très économiques (tels que DeepSeek-V4-Flash via la passerelle OpenRouter, ou un abonnement Nous Portal) à la technique de mise en cache du contexte (prompt caching). Les jetons lus en cache bénéficient d'une réduction tarifaire atteignant 75 %.
+        </p>
+
+        <p style="margin-top: 18px;">
+          Pour parer au risque d'explosion des coûts lié à la taille des données spatiales renvoyées par les outils, l'architecture doit impérativement configurer le paramètre de plafonnement de l'historique des outils :
+        </p>
+        <div class="code-block" style="margin-top: 10px;">
+gateway:
+  api_server:
+    enabled: true
+    port: 8642
+    history_tool_output_max_chars: 2000 # Plafond en caractères des sorties d'outils stockées
+        </div>
+        <p style="margin-top: 10px; font-size: 13px; color: var(--text-2);">
+          En fixant <code>history_tool_output_max_chars</code> à une valeur strictement supérieure à 0 (par exemple 2 000 caractères), le serveur d'agent tronque automatiquement les sorties d'outils volumineuses stockées dans la base de données d'historique, sans altérer le résultat immédiat renvoyé à l'utilisateur.
+        </p>
+      </section>
+
+      <section id="roadmap" style="margin-top: 50px;">
+        <h2 style="font-size: 24px; margin-bottom: 12px;">6. Feuille de Route Opérationnelle &amp; Redéfinition du Rôle du Géomaticien</h2>
+        <p>
+          L'avènement de l'IA agentique ne marque pas la disparition du géomaticien humain, mais opère une élévation majeure de sa valeur ajoutée organisationnelle. Le géomaticien passe du statut d'opérateur d'exécution (saisie cartographique, numérisation, lancement manuel de boîtes d'outils) à celui d'architecte de politiques géospatiales, de concepteur de garde-fous d'IA et de superviseur de systèmes autonomes.
+        </p>
+
+        <table style="margin-top: 18px;">
+          <thead>
+            <tr><th>Rôle traditionnel</th><th>Rôle agentique moderne</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Saisie de données &amp; vectoriel</td><td>Architecte de politiques SIG</td></tr>
+            <tr><td>Lancement manuel d'outils SIG</td><td>Concepteur de garde-fous IA</td></tr>
+            <tr><td>Traitement répétitif</td><td>Superviseur d'agents autonomes</td></tr>
+          </tbody>
+        </table>
+
+        <p style="margin-top: 26px;">
+          Le déploiement d'une équipe de géomaticiens autonomes au sein d'une organisation s'articule autour d'une feuille de route opérationnelle en 5 étapes clés :
+        </p>
+        <ol style="margin-top: 12px; font-size: 13px; color: var(--text-2); line-height: 1.7;">
+          <li><strong>Provisionnement de l'infrastructure VPS/Docker sécurisée</strong> : Instancier un serveur dédié (ex. VPS Linux sous Docker), configurer le proxy inverse avec chiffrement TLS, activer le serveur API (<code>API_SERVER_ENABLED=true</code>), définir une clé d'authentification robuste (<code>API_SERVER_KEY</code>) et fixer le port d'écoute sur 8642.</li>
+          <li><strong>Configuration du moteur d'agent, du LLM et des garde-fous de stockage</strong> : Raccorder la clé d'API (OpenRouter ou Nous Portal), sélectionner un modèle optimisé pour l'usage d'outils et le cache (DeepSeek-V4-Flash), configurer la persistance contextuelle via <code>X-Hermes-Session-Key</code>, et activer le plafonnement des sorties d'outils en historique (<code>gateway.api_server.history_tool_output_max_chars: 2000</code>).</li>
+          <li><strong>Connexion des identités machines, initialisation du réservoir de compétences et branchement GisAI</strong> : Attribuer des identités machines à moindre privilège pour chaque agent. Pré-charger l'environnement avec un socle de compétences de base certifiées (validation topologique, conversion de projections, contrôle de qualité attributaire) conformes à la norme agentskills.io au sein du Skills Hub.</li>
+          <li><strong>Implémentation des garde-fous de gouvernance et des files d'approbation</strong> : Mettre en place la validation déterministe des commandes au niveau de la passerelle d'orchestration (externe au LLM), paramétrer les seuils de risque et router toute action modifiant des tables en production vers la file d'approbation humaine (<code>/v1/runs/{run_id}/approval</code>).</li>
+          <li><strong>Mise en place des canaux de communication inter-plateformes et des tâches Cron</strong> : Interconnecter l'agent aux outils de communication de l'équipe (Telegram, Teams, Slack), désigner le canal principal de notification (<code>/set home</code>) et programmer les automatisations d'arrière-plan récurrentes via l'API <code>/api/jobs</code>.</li>
+        </ol>
+
+        <p style="margin-top: 26px;">
+          L'impact organisationnel de cette transformation est immédiat : l'automatisation des tâches répétitives de géotraitement permet une accélération massive des études territoriales tout en maintenant une qualité de donnée optimale grâce à des audits continus.
+        </p>
+      </section>
+
+      <section id="conclusion" style="margin-top: 50px;">
+        <h2 style="font-size: 24px; margin-bottom: 12px;">Conclusion</h2>
+        <p>
+          La transition vers une géomatique autonome propulsée par l'IA agentique repose sur l'équilibre parfait entre trois piliers indissociables : un moteur d'agent persistant et conteneurisé (Runtime), un outillage spatial de pointe (GisAI), et une gouvernance déterministe native (Gouvernance d'Exécution). En maîtrisant cette chaîne d'ingénierie, les services géospatiaux se dotent d'une force de travail hybride, hautement évolutive, sécurisée et à forte valeur ajoutée au service de la décision territoriale.
+        </p>
+        <p style="margin-top: 16px; font-size: 13px; color: var(--text-3); font-style: italic;">
+          Rapport de synthèse — Licence open source — © 2026 Tristan VACHAUDEZ
+        </p>
+      </section>
+
+    </article>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <h5>GisAI Assistant</h5>
+          <span>Assistant géomatique local pour QGIS — modèles, RAG et outils spatiaux déterministes.</span>
+        </div>
+        <div>
+          <h5>Navigation</h5>
+          <a href="index.html">Accueil</a>
+          <a href="manuel.html">Manuel de construction</a>
+          <a href="agentic-team.html">Thèse Agentique</a>
+        </div>
+        <div>
+          <h5>Ressources</h5>
+          <a href="https://github.com/Tristan14123" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="#">Licence Open Source</a>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>© 2026 Tristan VACHAUDEZ — Rapport de synthèse</span>
+        <span class="mono">Licence open source</span>
+        <a href="https://github.com/Tristan14123" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-ghost">GitHub</a>
+        <span class="mono">QGIS · PyQGIS · GDAL · PostGIS · Ollama · Hermes Agent</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
