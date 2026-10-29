@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Top Outils Utilisés — Hermes, Opencode, Claude, GitHub</title>
+  <meta name="description" content="Présentation des outils principaux utilisés dans le projet GisAI : Hermes Agent, Opencode, Claude et GitHub, avec leur utilité respective." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===================== NAV ===================== -->
+  <header class="nav">
+    <div class="wrap nav-in">
+      <a href="index.html" class="brand">
+        <div>GisAI<span>.</span></div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="manuel.html">Manuel</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle">À savoir</a>
+          <ul class="dropdown-menu">
+            <li><a href="top-outils.html">Top outils</a></li>
+            <li><a href="agentic-team.html">Agentic team</a></li>
+            <li><a href="choix-ia-locale.html">Choisir son IA locale</a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="nav-right">
+        <a href="index.html" class="btn btn-ghost btn-sm">Retour à l'accueil</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" style="padding: 72px 0 56px; border-bottom: 1px solid var(--line);">
+    <div class="wrap hero-inner">
+      <span class="eyebrow"><span class="dot"></span>Stack technique — Outils principaux</span>
+      <h1>Les outils<br>du quotidien</h1>
+      <p class="lead" style="max-width: 72ch;">
+        Présentation des quatre outils au cœur du projet : Hermes Agent, Opencode, Claude et GitHub, avec leur rôle et leur utilité dans l'architecture.
+      </p>
+      <div class="hero-meta" style="margin-top: 40px;">
+        <div class="m"><div class="k">Catégorie</div><div class="v">Runtime · IA · Versioning</div></div>
+        <div class="m"><div class="k">Usage</div><div class="v">Développement &amp; déploiement</div></div>
+        <div class="m"><div class="k">DA</div><div class="v">Blanc épuré · Notice technique</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== OUTILS ===================== -->
+  <main class="wrap" style="max-width: 880px;">
+    <article style="margin-bottom: 60px; line-height: 1.75;">
+
+      <section id="intro" style="margin-bottom: 50px;">
+        <h2 style="font-size: 24px; margin-bottom: 12px;">Présentation générale</h2>
+        <p>
+          Ce projet s'appuie sur un ensemble réduit d'outils soigneusement sélectionnés pour leur complémentarité. Chacun occupe une place précise dans la chaîne : <strong>Hermes Agent</strong> pour le runtime d'exécution autonome, <strong>Opencode</strong> pour l'assistance au développement, <strong>Claude</strong> pour le raisonnement et la planification, et <strong>GitHub</strong> pour l'hébergement et le versioning du code.
+        </p>
+      </section>
+
+      <!-- HERMES -->
+      <section id="hermes" style="margin-bottom: 50px;">
+        <div class="card reveal" style="padding: 26px; background: var(--panel); border: 1px solid var(--line);">
+          <div style="display: flex; align-items: flex-start; gap: 18px;">
+            <div style="flex: 0 0 auto; width: 120px; height: 120px; display: flex; align-items: center; justify-content: center; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg);">
+              <!-- Logo Hermes Agent officiel via CDN lobe-icons -->
+              <img src="https://raw.githubusercontent.com/lobehub/lobe-icons/refs/heads/master/packages/static-svg/icons/hermesagent.svg" alt="Hermes Agent" style="width: 56px; height: 56px; border-radius: 12px; background: #ffffff;">
+            </div>
+            <div style="flex: 1;">
+              <h3 style="font-size: 20px; margin-bottom: 6px;">Hermes Agent</h3>
+              <p style="color: var(--text-2); margin-bottom: 12px; font-size: 14px;">
+                Démon système d'arrière-plan qui pilote l'exécution des agents autonomes. Contrairement à un LLM qui se contente de planifier, Hermes Agent exécute concrètement les opérations géospatiales via des outils déterministes.
+              </p>
+              <ul style="font-size: 13px; color: var(--text-2); line-height: 1.7; margin-bottom: 12px;">
+                <li><strong>LLM vs Hermes :</strong> le LLM planifie (il génère du texte, pas du code exécutable) ; Hermes exécute (il appelle PyQGIS, GDAL, PostGIS et valide chaque paramètre avant transmission au système hôte).</li>
+                <li><strong>Runtime persistant :</strong> disponibilité 24/7, asynchronisme, persistance contextuelle — idéal pour les tâches longues et les jobs planifiés (Cron).</li>
+                <li><strong>Trois endpoints :</strong> <code>/v1/chat/completions</code> (stateless), <code>/v1/responses</code> (stateful), <code>/v1/runs</code> (asynchrone).</li>
+                <li><strong>Apprentissage via Skills :</strong> conforme à la norme open-source <strong>agentskills.io</strong>. Chaque séquence d'opérations réussie est consignée comme une compétence réutilisable, publiée sur le Skills Hub et immédiatement utilisable par l'ensemble des agents de l'équipe.</li>
+                <li><strong>Sécurité :</strong> authentification Bearer (<code>API_SERVER_KEY</code>) et cloisonnement par <code>X-Hermes-Session-Key</code>.</li>
+                <li><strong>Garde-fous :</strong> plafonnement des sorties d'outils à 2 000 caractères (<code>history_tool_output_max_chars</code>).</li>
+              </ul>
+              <div style="font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--text-3);">Rôle · Runtime d'agent autonome</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- OPEncode -->
+      <section id="opencode" style="margin-bottom: 50px;">
+        <div class="card reveal" style="padding: 26px; background: var(--panel); border: 1px solid var(--line);">
+          <div style="display: flex; align-items: flex-start; gap: 18px;">
+            <div style="flex: 0 0 auto; width: 120px; height: 120px; display: flex; align-items: center; justify-content: center; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg);">
+              <!-- Logo Opencode officiel via CDN lobe-icons -->
+              <img src="https://raw.githubusercontent.com/lobehub/lobe-icons/refs/heads/master/packages/static-svg/icons/opencode.svg" alt="Opencode" style="width: 56px; height: 56px; border-radius: 12px; background: #ffffff;">
+            </div>
+            <div style="flex: 1;">
+              <h3 style="font-size: 20px; margin-bottom: 6px;">Opencode</h3>
+              <p style="color: var(--text-2); margin-bottom: 12px; font-size: 14px;">
+                Agent de codage qui assiste le développement en générant, modifiant et validant du code source. Il pilote les sessions d'agents IA pour produire des scripts géomatiques et des fichiers de configuration de manière reproductible.
+              </p>
+              <ul style="font-size: 13px; color: var(--text-2); line-height: 1.7; margin-bottom: 12px;">
+                <li><strong>Assistance développement :</strong> génération de code Python, shell et fichiers de configuration.</li>
+                <li><strong>Orchestration :</strong> pilotage de sessions d'agents IA indépendantes pour éviter les biais méthodologiques.</li>
+                <li><strong>Révision de code :</strong> analyse neutre de l'architecture, détection des redondances et observabilité.</li>
+                <li><strong>Intégration :</strong> utilise les modèles locaux (Ollama) ou distants selon les besoins de traitement.</li>
+              </ul>
+              <div style="font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--text-3);">Rôle · Agent de codage &amp; orchestration</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CLAUDE -->
+      <section id="claude" style="margin-bottom: 50px;">
+        <div class="card reveal" style="padding: 26px; background: var(--panel); border: 1px solid var(--line);">
+          <div style="display: flex; align-items: flex-start; gap: 18px;">
+            <div style="flex: 0 0 auto; width: 120px; height: 120px; display: flex; align-items: center; justify-content: center; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg);">
+              <!-- Logo Claude officiel via CDN lobe-icons -->
+              <img src="https://raw.githubusercontent.com/lobehub/lobe-icons/refs/heads/master/packages/static-svg/icons/claude.svg" alt="Claude" style="width: 56px; height: 56px; border-radius: 12px; background: #ffffff;">
+            </div>
+            <div style="flex: 1;">
+              <h3 style="font-size: 20px; margin-bottom: 6px;">Claude</h3>
+              <p style="color: var(--text-2); margin-bottom: 12px; font-size: 14px;">
+                Modèle de langage de grande taille utilisé comme centre de planification cognitive. Il traduit les intentions en langage naturel en pipelines de traitement géospatial structurés, sans exécuter lui-même les opérations.
+              </p>
+              <ul style="font-size: 13px; color: var(--text-2); line-height: 1.7; margin-bottom: 12px;">
+                <li><strong>Planification cognitive :</strong> transforme une demande métier en plan d'action structuré et explicite.</li>
+                <li><strong>Séparation plan / exécution :</strong> Claude planifie, les outils exécutent (règle architecturale centrale).</li>
+                <li><strong>Raisonnement géospatial :</strong> interprète les relations topologiques, les CRS et les contraintes spatiales.</li>
+                <li><strong>Routage :</strong> modèle léger pour les opérations simples, modèle plus performant pour les raisonnements complexes.</li>
+              </ul>
+              <div style="font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--text-3);">Rôle · Planification cognitive (LLM)</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- GITHUB -->
+      <section id="github" style="margin-bottom: 50px;">
+        <div class="card reveal" style="padding: 26px; background: var(--panel); border: 1px solid var(--line);">
+          <div style="display: flex; align-items: flex-start; gap: 18px;">
+            <div style="flex: 0 0 auto; width: 120px; height: 120px; display: flex; align-items: center; justify-content: center; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg);">
+              <!-- Logo GitHub officiel via CDN lobe-icons -->
+              <img src="https://raw.githubusercontent.com/lobehub/lobe-icons/refs/heads/master/packages/static-svg/icons/github.svg" alt="GitHub" style="width: 56px; height: 56px; border-radius: 12px; background: #ffffff;">
+            </div>
+            <div style="flex: 1;">
+              <h3 style="font-size: 20px; margin-bottom: 6px;">GitHub</h3>
+              <p style="color: var(--text-2); margin-bottom: 12px; font-size: 14px;">
+                Plateforme d'hébergement de code et de gestion de versions. Elle sert de dépôt central pour le manuscrit, les scripts de déploiement, le site de documentation et les fichiers de configuration du projet GisAI.
+              </p>
+              <ul style="font-size: 13px; color: var(--text-2); line-height: 1.7; margin-bottom: 12px;">
+                <li><strong>Versioning Git :</strong> historique des modifications, branches de développement et revues de code (pull requests).</li>
+                <li><strong>Hébergement :</strong> stockage du manuscrit PDF, des images du manuel et des sources du site web.</li>
+                <li><strong>CI/CD :</strong> déploiement automatisé et tests d'intégration via GitHub Actions.</li>
+                <li><strong>Collaboration :</strong> issues, discussions et suivi des tâches liées au développement de l'assistant géomatique.</li>
+              </ul>
+              <div style="font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--text-3);">Rôle · Hébergement &amp; versioning</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SYNTHESE -->
+      <section id="synthese" style="margin-top: 30px;">
+        <div class="card reveal" style="background: var(--surface); border: 1px solid var(--line); padding: 26px;">
+          <h3 style="font-size: 18px; margin-bottom: 14px;">Comment les outils s'articulent</h3>
+          <div class="grid g4" style="margin-top: 16px;">
+            <div class="card" style="padding: 16px; background: var(--panel); border: 1px solid var(--line);">
+              <div style="font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--text-3); margin-bottom: 8px;">Hermes</div>
+              <div style="font-size: 13px; color: var(--text-2); line-height: 1.5;">Runtime d'exécution autonome</div>
+            </div>
+            <div class="card" style="padding: 16px; background: var(--panel); border: 1px solid var(--line);">
+              <div style="font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--text-3); margin-bottom: 8px;">Opencode</div>
+              <div style="font-size: 13px; color: var(--text-2); line-height: 1.5;">Génération et révision de code</div>
+            </div>
+            <div class="card" style="padding: 16px; background: var(--panel); border: 1px solid var(--line);">
+              <div style="font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--text-3); margin-bottom: 8px;">Claude</div>
+              <div style="font-size: 13px; color: var(--text-2); line-height: 1.5;">Planification cognitive LLM</div>
+            </div>
+            <div class="card" style="padding: 16px; background: var(--panel); border: 1px solid var(--line);">
+              <div style="font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--text-3); margin-bottom: 8px;">GitHub</div>
+              <div style="font-size: 13px; color: var(--text-2); line-height: 1.5;">Dépôt et versioning du code</div>
+            </div>
+          </div>
+          <p style="margin-top: 20px; font-size: 13px; color: var(--text-3); font-style: italic;">
+            Chacun de ces outils occupe un rôle distinct dans la chaîne de développement : Claude planifie, Opencode génère, Hermes exécute et GitHub versionne.
+          </p>
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <h5>GisAI Assistant</h5>
+          <span>Assistant géomatique local pour QGIS — modèles, RAG et outils spatiaux déterministes.</span>
+        </div>
+        <div>
+          <h5>Navigation</h5>
+          <a href="index.html">Accueil</a>
+          <a href="manuel.html">Manuel de construction</a>
+          <a href="agentic-team.html">Géomaticien IA</a>
+        </div>
+        <div>
+          <h5>Ressources</h5>
+          <a href="https://github.com/Tristan14123" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="#">Licence Open Source</a>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>© 2026 Tristan VACHAUDEZ — Rapport de synthèse</span>
+        <span class="mono">Licence open source</span>
+        <a href="https://github.com/Tristan14123" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-ghost">GitHub</a>
+        <span class="mono">QGIS · PyQGIS · GDAL · PostGIS · Ollama · Hermes Agent</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

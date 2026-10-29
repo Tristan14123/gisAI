@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Choisir son IA locale — Selon sa machine et ses besoins</title>
+  <meta name="description" content="Guide pour choisir un modèle d'IA locale selon son matériel (VRAM, RAM, GPU) et simulateur interactif pour trouver le modèle le plus puissant adapté." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* Simulateur spécifique */
+    .simulator {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--r-lg);
+      padding: 26px;
+      margin-top: 30px;
+    }
+    .simulator h3 {
+      font-size: 18px;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+    .sim-form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .sim-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .sim-field label {
+      font-size: 12px;
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--text-3);
+    }
+    .sim-field select, .sim-field input {
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--r-md);
+      background: #fff;
+      font-size: 14px;
+      color: var(--text);
+      font-family: var(--sans);
+    }
+    .sim-btn {
+      grid-column: 1 / -1;
+      width: fit-content;
+    }
+    .sim-result {
+      margin-top: 24px;
+      padding: 20px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--r-lg);
+      display: none;
+    }
+    .sim-result.show { display: block; }
+    .result-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      background: var(--ink);
+      color: #fff;
+      border-radius: var(--r-pill);
+      font-size: 12px;
+      font-weight: 700;
+      font-family: var(--mono);
+      letter-spacing: .06em;
+      margin-bottom: 12px;
+    }
+    .result-model {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+    .result-vram {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--text-3);
+      margin-bottom: 16px;
+    }
+    .result-tasks {
+      margin-top: 16px;
+    }
+    .result-tasks h4 {
+      font-size: 14px;
+      color: var(--text-3);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 10px;
+      font-family: var(--mono);
+    }
+    .result-tasks ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+    }
+    .result-tasks li {
+      font-size: 13px;
+      color: var(--text-2);
+      padding: 8px 12px;
+      background: #f7f7f7;
+      border: 1px solid var(--line);
+      border-radius: var(--r-md);
+    }
+    .warning {
+      margin-top: 16px;
+      font-size: 12.5px;
+      color: var(--text-3);
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== NAV ===================== -->
+  <header class="nav">
+    <div class="wrap nav-in">
+      <a href="index.html" class="brand">
+        <div>GeoAI<span>.</span></div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="manuel.html">Manuel</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle">À savoir</a>
+          <ul class="dropdown-menu">
+            <li><a href="top-outils.html">Top outils</a></li>
+            <li><a href="agentic-team.html">Agentic team</a></li>
+            <li><a href="choix-ia-locale.html" class="active">Choisir son IA locale</a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="nav-right">
+        <a href="index.html" class="btn btn-ghost btn-sm">Retour à l'accueil</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" style="padding: 72px 0 56px; border-bottom: 1px solid var(--line);">
+    <div class="wrap hero-inner">
+      <span class="eyebrow"><span class="dot"></span>Guide pratique — Inférence locale</span>
+      <h1>Choisir son IA locale<br>selon sa machine</h1>
+      <p class="lead" style="max-width: 72ch;">
+        Déterminez le modèle d'IA locale le plus puissant que votre matériel peut faire tourner, et ce que vous pouvez en faire pour la géomatique et le SIG.
+      </p>
+      <div class="hero-meta" style="margin-top: 40px;">
+        <div class="m"><div class="k">Critère clé</div><div class="v">VRAM (mémoire GPU)</div></div>
+        <div class="m"><div class="k">Standard</div><div class="v">GGUF Q4_K_M</div></div>
+        <div class="m"><div class="k">Moteur</div><div class="v">Ollama · Hermes Agent</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTENU ===================== -->
+  <main class="wrap" style="max-width: 880px;">
+    <article style="margin-bottom: 60px; line-height: 1.75;">
+
+      <section id="choisir" style="margin-bottom: 50px;">
+        <h2 style="font-size: 24px; margin-bottom: 12px;">1. Comment choisir son modèle</h2>
+        <p>
+          Le critère déterminant n'est pas la puissance brute du CPU, mais la <strong>VRAM</strong> (mémoire vidéo du GPU) ou la mémoire unifiée (Apple Silicon). Un modèle de langage doit être chargé en mémoire pour répondre ; si la VRAM est insuffisante, le système bascule sur le CPU et les performances chutent de ~100 tokens/s à moins de 5 tokens/s.
+        </p>
+        <div class="grid g3" style="margin-top: 22px;">
+          <div class="card" style="padding: 22px;">
+            <h4 style="font-size: 15px; margin-bottom: 8px;">💻 Ordinateur portable</h4>
+            <p style="font-size: 13px; color: var(--text-2);">
+              Apple Silicon M1-M4, 16-32 Go RAM unifiée. Modèles 7B à 13B. Exploitation du Neural Engine.
+            </p>
+          </div>
+          <div class="card" style="padding: 22px;">
+            <h4 style="font-size: 15px; margin-bottom: 8px;">🎮 Station de travail</h4>
+            <p style="font-size: 13px; color: var(--text-2);">
+              NVIDIA RTX 4090 (24 Go VRAM). Modèles 13B à 33B. Idéal pour le codage agentique.
+            </p>
+          </div>
+          <div class="card" style="padding: 22px;">
+            <h4 style="font-size: 15px; margin-bottom: 8px;">🖥️ Serveur / Multi-GPU</h4>
+            <p style="font-size: 13px; color: var(--text-2);">
+              2x RTX 3090/4090 (48 Go+ VRAM). Modèles 70B+. Raisonnement complexe et fenêtres de contexte étendues.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="tableau" style="margin-bottom: 50px;">
+        <h2 style="font-size: 24px; margin-bottom: 12px;">2. Modèles par taille et VRAM requise</h2>
+        <p style="font-size: 13px; color: var(--text-3); margin-bottom: 16px;">
+          Estimations pour une quantification <strong>Q4_K_M</strong> (standard industriel : équilibre performance / mémoire).
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Modèle</th>
+              <th>Taille</th>
+              <th>VRAM estimée</th>
+              <th>Débit (Q4_K_M)</th>
+              <th>Usage recommandé</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Gemma 4B</strong></td>
+              <td>4B paramètres</td>
+              <td>~3-4 Go</td>
+              <td>~100-130 tok/s</td>
+              <td>Opérations simples, extraction de paramètres, Q&A rapide</td>
+            </tr>
+            <tr>
+              <td><strong>Llama 3.1 8B</strong></td>
+              <td>8B paramètres</td>
+              <td>~5-6 Go</td>
+              <td>~95-110 tok/s</td>
+              <td>Usage polyvalent, génération de code, buffer QGIS simple</td>
+            </tr>
+            <tr>
+              <td><strong>Gemma 12B</strong></td>
+              <td>12B paramètres</td>
+              <td>~7-8 Go</td>
+              <td>~70-90 tok/s</td>
+              <td>Raisonnement modéré, plans d'action, demandes SIG complexes</td>
+            </tr>
+            <tr>
+              <td><strong>Llama 3.1 70B</strong></td>
+              <td>70B paramètres</td>
+              <td>~40-45 Go</td>
+              <td>~15-25 tok/s</td>
+              <td>Raisonnement complexe, plans multi-étapes, agents autonomes</td>
+            </tr>
+            <tr>
+              <td><strong>DeepSeek-R1</strong></td>
+              <td>7B à 671B</td>
+              <td>4 Go à 400+ Go</td>
+              <td>Variable</td>
+              <td>Raisonnement spécialisé, selon variante choisie</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- SIMULATEUR -->
+      <section id="simulateur">
+        <div class="simulator">
+          <h3>🎯 Simulateur — Quel modèle pour votre machine ?</h3>
+          <button type="button" id="btn-calculer-2" class="btn btn-primary" style="margin-bottom: 16px;">Calculer le modèle recommandé</button>
+          <div class="sim-form">
+            <div class="sim-field">
+              <label for="vram">VRAM / Mémoire unifiée (Go)</label>
+              <select id="vram">
+                <option value="2">2 Go</option>
+                <option value="4">4 Go</option>
+                <option value="6" selected>6 Go</option>
+                <option value="8">8 Go</option>
+                <option value="12">12 Go</option>
+                <option value="16">16 Go</option>
+                <option value="24">24 Go</td>
+                <option value="32">32 Go</option>
+                <option value="48">48 Go+</option>
+              </select>
+            </div>
+            <div class="sim-field">
+              <label for="materiel">Type de matériel</label>
+              <select id="materiel">
+                <option value="nvidia" selected>NVIDIA GPU (RTX/GTX)</option>
+                <option value="apple">Apple Silicon (M1/M2/M3/M4)</option>
+                <option value="cpu">CPU uniquement</option>
+              </select>
+            </div>
+            <div class="sim-field">
+              <label for="ram">RAM système (Go)</label>
+              <select id="ram">
+                <option value="8">8 Go</option>
+                <option value="16" selected>16 Go</option>
+                <option value="32">32 Go</option>
+                <option value="64">64 Go+</option>
+              </select>
+            </div>
+            <button type="button" id="btn-calculer" class="btn btn-primary sim-btn">Calculer le modèle recommandé</button>
+          </div>
+
+          <div id="resultat" class="sim-result">
+            <div class="result-badge" id="badge">Modèle recommandé</div>
+            <div class="result-model" id="modele">—</div>
+            <div class="result-vram" id="vramInfo">VRAM nécessaire : —</div>
+            <div class="result-tasks">
+              <h4>Ce que vous pouvez en faire</h4>
+              <ul id="taches">
+              </ul>
+            </div>
+            <div class="warning">
+              💡 Conseil : commencez par un modèle léger (4B-8B) pour valider votre pipeline, puis montez en puissance selon vos besoins.
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <h5>GeoAI Assistant</h5>
+          <span>Assistant géomatique local pour QGIS — modèles, RAG et outils spatiaux déterministes.</span>
+        </div>
+        <div>
+          <h5>Navigation</h5>
+          <a href="index.html">Accueil</a>
+          <a href="manuel.html">Manuel de construction</a>
+          <a href="agentic-team.html">Agentic team</a>
+          <a href="top-outils.html">Top outils</a>
+        </div>
+        <div>
+          <h5>Ressources</h5>
+          <a href="https://github.com/Tristan14123" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="#">Licence Open Source</a>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>© 2026 Tristan VACHAUDEZ — Rapport de synthèse</span>
+        <span class="mono">Licence open source</span>
+        <a href="https://github.com/Tristan14123" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-ghost">GitHub</a>
+        <span class="mono">QGIS · PyQGIS · GDAL · PostGIS · Ollama · Hermes Agent</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const btn = document.getElementById('btn-calculer');
+      const resultat = document.getElementById('resultat');
+      const badge = document.getElementById('badge');
+      const modele = document.getElementById('modele');
+      const vramInfo = document.getElementById('vramInfo');
+      const taches = document.getElementById('taches');
+
+      const recommandations = [
+        { vramMax: 3, materiel: 'cpu', modele: 'Gemma 4B (quantifié)', vram: '~2-3 Go', taches: [
+          'Extraction de paramètres depuis du langage naturel',
+          'Résumé de documents SIG courts',
+          'Questions-réponses simples sur vos données',
+          'Génération de requêtes SQL basiques'
+        ]},
+        { vramMax: 5, materiel: 'nvidia', modele: 'Llama 3.1 8B (Q4_K_M)', vram: '~5-6 Go', taches: [
+          'Génération de code Python pour PyQGIS',
+          'Opérations SIG simples (buffer, clip, reprojection)',
+          'Extraction d\'entités depuis des documents',
+          'Assistant conversationnel léger'
+        ]},
+        { vramMax: 5, materiel: 'apple', modele: 'Gemma 12B (Q4_K_M)', vram: '~7-8 Go', taches: [
+          'Raisonnement modéré sur des demandes SIG',
+          'Génération de plans d\'action structurés',
+          'Analyse de petits jeux de données géospatiales',
+          'Assistant conversationnel intermédiaire'
+        ]},
+        { vramMax: 5, materiel: 'cpu', modele: 'Gemma 4B (Q4_K_M)', vram: '~3-4 Go (RAM)', taches: [
+          'Extraction de paramètres simples',
+          'Requêtes en langage naturel sur des données tabulaires',
+          'Génération de scripts SIG basiques'
+        ]},
+        { vramMax: 9, materiel: 'nvidia', modele: 'Gemma 12B (Q4_K_M)', vram: '~7-8 Go', taches: [
+          'Demandes SIG complexes (plusieurs opérations)',
+          'Génération de plans de traitement multi-étapes',
+          'Analyse topologique modérée',
+          'Routage entre modèles légers et lourds'
+        ]},
+        { vramMax: 9, materiel: 'apple', modele: 'Llama 3.1 8B (Q4_K_M)', vram: '~5-6 Go', taches: [
+          'Usage polyvalent (code, analyse, Q&A)',
+          'Génération de scripts Python/SIG',
+          'Assistant conversationnel robuste'
+        ]},
+        { vramMax: 9, materiel: 'cpu', modele: 'Llama 3.1 8B (Q4_K_M)', vram: '~5-6 Go (RAM)', taches: [
+          'Génération de code et scripts SIG',
+          'Analyse de données géographiques modérée',
+          'Assistant de développement local'
+        ]},
+        { vramMax: 17, materiel: 'nvidia', modele: 'Llama 3.1 70B (Q4_K_M)', vram: '~40-45 Go', taches: [
+          'Raisonnement complexe sur des pipelines SIG',
+          'Plans d\'action multi-étapes avec validation',
+          'Orchestration d\'agents géospatiaux',
+          'Génération de code avancé et débogage'
+        ]},
+        { vramMax: 17, materiel: 'apple', modele: 'Llama 3.1 70B (Q4_K_M)', vram: '~40-45 Go (mémoire unifiée)', taches: [
+          'Analyse géospatiale avancée',
+          'Agents autonomes avec mémoire persistante',
+          'Modélisation spatio-temporelle complexe'
+        ]},
+        { vramMax: 17, materiel: 'cpu', modele: 'Gemma 12B (Q4_K_M)', vram: '~7-8 Go (RAM)', taches: [
+          'Demandes SIG complexes',
+          'Génération de plans structurés',
+          'Analyse modérée de données géographiques'
+        ]},
+        { vramMax: 999, materiel: 'nvidia', modele: 'Llama 3.1 70B ou DeepSeek-R1 (distillé)', vram: '~40-80+ Go', taches: [
+          'Agents autonomes 24/7 avec orchestration multi-agents',
+          'Raisonnement de niveau expert sur le territoire',
+          'Génération de pipelines SIG complets et autonomes',
+          'Mémoire procédurale et Skills Hub (agentskills.io)'
+        ]},
+        { vramMax: 999, materiel: 'apple', modele: 'Llama 3.1 70B ou cluster de modèles 13B+', vram: '~40-64 Go (mémoire unifiée)', taches: [
+          'Infrastructure d\'agents géomatiques autonome',
+          'Analyse territoriale complexe et prédictive',
+          'Orchestration de traitements SIG lourds'
+        ]},
+        { vramMax: 999, materiel: 'cpu', modele: 'Llama 3.1 8B (Q4_K_M)', vram: '~5-6 Go (RAM)', taches: [
+          'Usage polyvalent limité par la vitesse CPU',
+          'Développement et tests locaux',
+          'Assistant de codage SIG léger'
+        ]}
+      ];
+
+      btn.addEventListener('click', function() {
+        const vram = parseInt(document.getElementById('vram').value);
+        const materiel = document.getElementById('materiel').value;
+        const ram = parseInt(document.getElementById('ram').value);
+
+        // Trouver la meilleure recommandation
+        let meilleure = null;
+        for (const r of recommandations) {
+          if (vram >= (r.vramMax - 2) && vram <= r.vramMax && r.materiel === materiel) {
+            meilleure = r;
+            break;
+          }
+        }
+
+        // Fallback : prendre la plus proche en VRAM quelle que soit la matière
+        if (!meilleure) {
+          for (const r of recommandations) {
+            if (r.materiel === materiel && vram <= r.vramMax) {
+              meilleure = r;
+              break;
+            }
+          }
+        }
+        if (!meilleure) {
+          // Dernier recours : le plus petit modèle
+          meilleure = recommandations[0];
+        }
+
+        badge.textContent = 'Modèle recommandé';
+        modele.textContent = meilleure.modele;
+        vramInfo.textContent = 'VRAM nécessaire : ' + meilleure.vram;
+        taches.innerHTML = meilleure.taches.map(t => '<li>' + t + '</li>').join('');
+
+        resultat.classList.add('show');
+        resultat.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+</body>
+</html>
