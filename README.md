@@ -5,7 +5,7 @@ Assistant géomatique local pour QGIS — articulation d'un modèle de langage l
 [![License: MIT](https://img.shields.io/badge/License-Open%20Source-blue.svg)](LICENSE)
 [![Status](https://img.shields.io/badge/Status-Rapport%20de%20synthèse-green.svg)]()
 [![QGIS](https://img.shields.io/badge/QGIS-PyQGIS%20%7C%20GDAL%20%7C%20PostGIS-blue.svg)]()
-[![Hermes Agent](https://img.shields.io/badge/Hermes%20Agent-Port%208642-purple.svg)]()
+[![Hermes Agent](https://img.shields.io/badge/Hermes%20Agent-Skill%20Qgis-purple.svg)]()
 
 ---
 
