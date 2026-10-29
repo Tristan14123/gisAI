@@ -17,7 +17,7 @@
     <div class="wrap nav-in">
       <a href="index.html" class="brand">
         <div class="brand-mark">G</div>
-        <div>GeoAI<span>.</span></div>
+        <div>GisAI<span>.</span></div>
       </a>
       <ul class="nav-links">
         <li><a href="index.html">Accueil</a></li>
@@ -362,7 +362,7 @@ history_tool_output_max_chars: 2000
           <div class="step-badge">8</div>
           <div class="step-head-text">
             <div class="step-title">Vérification, test et mise en production</div>
-            <div class="step-part">Test des endpoints et intégration QGIS / GeoAI Assistant</div>
+            <div class="step-part">Test des endpoints et intégration QGIS / GisAI Assistant</div>
           </div>
         </div>
       </div>
@@ -370,7 +370,7 @@ history_tool_output_max_chars: 2000
         <div class="step-content">
           <h3>Valider le fonctionnement de l'infrastructure</h3>
           <p>
-            Une fois le déploiement terminé, vérifier que l'API répond correctement et que l'inférence locale fonctionne avant d'intégrer un client tel que le plugin GeoAI Assistant dans QGIS.
+            Une fois le déploiement terminé, vérifier que l'API répond correctement et que l'inférence locale fonctionne avant d'intégrer un client tel que le plugin GisAI Assistant dans QGIS.
           </p>
           <div class="code-block">
 # Test de l'endpoint chat (stateless)
@@ -390,7 +390,7 @@ curl -X POST http://localhost:8642/v1/runs \
   -d '{"prompt": "Analyser l\'emprise de Saint-Lô", "idempotency_key": "cle_unique_24h"}'
           </div>
           <ul>
-            <li><strong>Intégration QGIS</strong> : le plugin GeoAI Assistant s'appuie sur cette infrastructure (Gemma 12B, module RAG, couche d'outils PyQGIS/GDAL/PostGIS).</li>
+            <li><strong>Intégration QGIS</strong> : le plugin GisAI Assistant s'appuie sur cette infrastructure (Gemma 12B, module RAG, couche d'outils PyQGIS/GDAL/PostGIS).</li>
             <li><strong>Annexe 1</strong> : architecture Multi-AI avec Gemma 4B (rapide), EmbeddingGemma (recherche), Gemma-Geo (spécialisé) et outils Python/PyQGIS.</li>
             <li><strong>Annexe 2</strong> : pseudo-flux d'orchestration — recevoir la demande, normaliser, rechercher la documentation, générer un plan, valider, exécuter, journaliser, restituer.</li>
             <li><strong>Gouvernance</strong> : validation déterministe des commandes avant exécution, files d'approbation humaine via <code>/v1/runs/{run_id}/approval</code>.</li>
@@ -423,7 +423,7 @@ curl -X POST http://localhost:8642/v1/runs \
     <div class="wrap">
       <div class="foot-grid">
         <div>
-          <h5>GeoAI Assistant</h5>
+          <h5>GisAI Assistant</h5>
           <span>Assistant géomatique local pour QGIS — modèles, RAG et outils spatiaux déterministes.</span>
         </div>
         <div>
