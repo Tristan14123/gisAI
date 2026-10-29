@@ -49,20 +49,37 @@
       font-size: 14px;
       color: var(--text);
       font-family: var(--sans);
+      transition: border-color 0.2s; /* Transition pour le focus */
+    }
+    .sim-field select:focus, .sim-field input:focus {
+        border-color: var(--primary-color);
+        outline: none;
+    }
+    .btn, .sim-btn {
+      transition: background-color 0.2s, transform 0.1s;
+      cursor: pointer;
+    }
+    .btn:hover, .sim-btn:hover {
+        transform: translateY(-1px);
     }
     .sim-btn {
       grid-column: 1 / -1;
       width: fit-content;
+      margin-top: 10px;
+      margin-bottom: 16px;
     }
     .sim-result {
-      margin-top: 24px;
-      padding: 20px;
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: var(--r-lg);
-      display: none;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+      visibility: hidden;
     }
-    .sim-result.show { display: block; }
+    /* Classe ajoutée en JS pour forcer l'affichage animé */
+    .sim-result.show { 
+      opacity: 1; 
+      transform: translateY(0); 
+      visibility: visible; 
+    }
     .result-badge {
       display: inline-flex;
       align-items: center;
@@ -116,6 +133,10 @@
       background: #f7f7f7;
       border: 1px solid var(--line);
       border-radius: var(--r-md);
+      transition: background-color 0.2s;
+    }
+    .result-tasks li:hover {
+        background-color: #eef;
     }
     .warning {
       margin-top: 16px;
@@ -131,7 +152,7 @@
   <header class="nav">
     <div class="wrap nav-in">
       <a href="index.html" class="brand">
-        <div>GisAI<span>.</span></div>
+        <div>GeoAI<span>.</span></div>
       </a>
       <ul class="nav-links">
         <li><a href="index.html">Accueil</a></li>
@@ -159,6 +180,7 @@
       <p class="lead" style="max-width: 72ch;">
         Déterminez le modèle d'IA locale le plus puissant que votre matériel peut faire tourner, et ce que vous pouvez en faire pour la géomatique et le SIG.
       </p>
+      <a href="#simulateur" class="btn btn-primary sim-btn">choisir le bon modèle d'IA locale</a>
       <div class="hero-meta" style="margin-top: 40px;">
         <div class="m"><div class="k">Critère clé</div><div class="v">VRAM (mémoire GPU)</div></div>
         <div class="m"><div class="k">Standard</div><div class="v">GGUF Q4_K_M</div></div>
@@ -257,7 +279,7 @@
       <section id="simulateur">
         <div class="simulator">
           <h3>🎯 Simulateur — Quel modèle pour votre machine ?</h3>
-          <button type="button" id="btn-calculer-2" class="btn btn-primary" style="margin-bottom: 16px;">Calculer le modèle recommandé</button>
+          
           <div class="sim-form">
             <div class="sim-field">
               <label for="vram">VRAM / Mémoire unifiée (Go)</label>
@@ -317,7 +339,7 @@
     <div class="wrap">
       <div class="foot-grid">
         <div>
-          <h5>GisAI Assistant</h5>
+          <h5>GeoAI Assistant</h5>
           <span>Assistant géomatique local pour QGIS — modèles, RAG et outils spatiaux déterministes.</span>
         </div>
         <div>
