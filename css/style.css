@@ -98,6 +98,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   border-radius: var(--r-pill);
   font-size: 14px;
   color: var(--text-2);
+  white-space: nowrap;
   transition: .18s;
 }
 .nav-links a:hover { color: var(--text); background: var(--surface); }
@@ -602,6 +603,65 @@ footer {
   filter: drop-shadow(0 0 14px rgba(0,0,0,.3));
 }
 .flow-node.pulse text { fill: #FFFFFF; }
+
+/* ============================ ANIMATIONS ============================ */
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pulseBadge {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,0,0,0.2); }
+  50% { box-shadow: 0 0 0 6px rgba(0,0,0,0.1); }
+}
+
+@keyframes progressFill {
+  from { width: 0%; }
+  to { width: var(--target-width); }
+}
+
+/* Hero animations */
+.hero-inner {
+  animation: fadeInUp 0.8s ease both;
+}
+
+.hero h1, .hero .lead, .hero-cta, .hero-meta {
+  animation: fadeIn 0.6s ease both;
+}
+
+.hero h1 { animation-delay: 0.2s; }
+.hero .lead { animation-delay: 0.4s; }
+.hero-cta { animation-delay: 0.6s; }
+.hero-meta { animation-delay: 0.8s; }
+
+/* Badge étape actuelle */
+.step-badge {
+  animation: pulseBadge 2s infinite ease-in-out;
+}
+
+/* Section reveal */
+.section {
+  animation: fadeIn 0.5s ease both;
+}
+
+/* Cartes notice */
+.notice-step {
+  animation: fadeInUp 0.5s ease both;
+}
+
+/* Boutons */
+.btn {
+  transition: all 0.2s ease;
+}
+.btn:active {
+  transform: scale(0.97);
+}
 
 /* ============================ RESPONSIVE ============================ */
 @media (max-width: 1024px) {
