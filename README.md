@@ -6,7 +6,7 @@ Assistant géomatique local pour QGIS — articulation d'un modèle de langage l
 [![Status](https://img.shields.io/badge/Status-Rapport%20de%20synthèse-green.svg)]()
 [![QGIS](https://img.shields.io/badge/QGIS-PyQGIS%20%7C%20GDAL%20%7C%20PostGIS-blue.svg)]()
 [![Hermes Agent](https://img.shields.io/badge/Hermes%20Agent-Skill%20Qgis-purple.svg)]()
-[![Local](https://img.shields.io/badge/IA%20Local-ollama%20Qgis-purple.svg)]()
+[![Local](https://img.shields.io/badge/IA%20Local-ollama%20%7C%LMstudio-orange.svg)]()
 ---
 
 ## 📋 Présentation
