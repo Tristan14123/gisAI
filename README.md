@@ -43,16 +43,16 @@ Ouvrez directement `site_geoai/index.html` dans votre navigateur. Aucune install
 
 Le manuel (`site_geoai/manuel.html`) détaille le déploiement en 8 étapes :
 
-| Étape | Contenu | Visuel |
-|-------|---------|--------|
-| 01 | Prérequis et environnement | `images/1.jpg` |
-| 02 | Installation d'Ollama (port 11434) | `images/2.jpg` |
-| 03 | Téléchargement du modèle (GGUF Q4_K_M) | `images/3.jpg` |
-| 04 | Déploiement de Hermes Agent (port 8642) | `images/4.jpg` |
-| 05 | Configuration du serveur API | `images/5.jpg` |
-| 06 | Variables d'environnement critiques | `images/6.jpg` |
-| 07 | Cloisonnement et plafonnement des sorties | `images/7.jpg` |
-| 08 | Vérification et mise en production | `images/8.jpg` |
+| Étape | Contenu |
+|-------|---------|
+| 01 | Prérequis et environnement |
+| 02 | Installation d'Ollama (port 11434) | 
+| 03 | Téléchargement du modèle (GGUF Q4_K_M) |
+| 04 | Déploiement de Hermes Agent (port 8642) | 
+| 05 | Configuration du serveur API | 
+| 06 | Variables d'environnement critiques | 
+| 07 | Cloisonnement et plafonnement des sorties | 
+| 08 | Vérification et mise en production | 
 
 Naviguez avec les flèches ← → du clavier ou les boutons de la notice.
 
