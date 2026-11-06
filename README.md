@@ -13,7 +13,7 @@ Assistant géomatique local pour QGIS — articulation d'un modèle de langage l
 
 **GisAI Assistant** est un rapport de synthèse et une architecture de référence pour déployer une intelligence artificielle agente locale dans les flux de travail géomatiques. Le projet se compose de :
 
-1. **Un site web de documentation** (blanc épuré, style notice technique / manuel LEGO)
+1. **Un site web de documentation** (blanc épuré, style notice technique / manuel)
 2. **Un manuel de construction en 8 étapes** pour installer l'inférence locale et le runtime Hermes Agent
 3. **Une thèse d'architecture** sur l'établissement d'une équipe de géomaticiens autonomes propulsée par l'IA agentique
 
